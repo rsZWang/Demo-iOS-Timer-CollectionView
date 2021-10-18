@@ -13,9 +13,8 @@ class ViewModel: NSObject {
     
     func addTimer(name: String, date: Date) {
         var newList = timerHandelrListMutableLiveData.value ?? []
-        newList.append(TimerHandler(id: 0, name: "", date: date))
+        newList.append(TimerHandler(id: 0, name: name, date: date))
         timerHandelrListMutableLiveData.value = newList
     }
-    
     
 }

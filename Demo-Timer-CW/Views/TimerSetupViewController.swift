@@ -28,6 +28,7 @@ class TimerSetupViewController: UIViewController {
             target: self,
             action: #selector(save)
         )
+        datePicker.minimumDate = Date()
     }
     
     @objc
@@ -37,7 +38,11 @@ class TimerSetupViewController: UIViewController {
     
     @objc
     private func save() {
-        viewModel.addTimer(name: textField.text ?? "Empty", date: datePicker.date)
+        var name = textField.text
+        if name == nil || name!.isEmpty {
+            name = "No name"
+        }
+        viewModel.addTimer(name: name!, date: datePicker.date)
         dismiss(animated: true, completion: nil)
     }
 

@@ -53,7 +53,6 @@ extension TimerListCollectionView: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        Log.i("sizeForItemAt: \(indexPath)")
         return CGSize(width: collectionView.frame.width/2 - 9, height: 200)
     }
       
@@ -85,8 +84,62 @@ class TimerListCollectionViewCell: UICollectionViewCell {
     func bind(index: Int, timerHandler: TimerHandler) {
         itemIndexLabel.text = timerHandler.name
         let countdown = timerHandler.count()
-        timeLabel.text = "\(countdown.day!)：\(countdown.hour!)：\(countdown.minute!)"
+        let dayString = timeDigitToString(countdown.day!, length: 3)
+        let hourString = timeDigitToString(countdown.hour!, length: 2)
+        let minuteString = timeDigitToString(countdown.minute!, length: 2)
+        timeLabel.attributedText = toTimeLabelAttributedString(
+            date: dayString,
+            hour: hourString,
+            minute: minuteString
+        )
     }
     
+    private func timeDigitToString(_ digit: Int, length: Int) -> String {
+        if digit < 0 {
+            return "0".padLeft(length: length, padding: "0")
+        } else {
+            return String(digit).padLeft(length: length, padding: "0")
+        }
+    }
+    
+    private func toTimeLabelAttributedString(
+        date: String,
+        hour: String,
+        minute: String
+    ) -> NSAttributedString {
+        let mutableAttributedString = NSMutableAttributedString()
+        mutableAttributedString.append(NSMutableAttributedString(
+            string: date,
+            attributes: [ NSAttributedString.Key.backgroundColor : #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1) ]
+        ))
+        mutableAttributedString.append(NSMutableAttributedString(
+            string: "  ：",
+            attributes: [ NSAttributedString.Key.backgroundColor : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) ]
+        ))
+        mutableAttributedString.append(NSMutableAttributedString(
+            string: hour,
+            attributes: [ NSAttributedString.Key.backgroundColor : #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1) ]
+        ))
+        mutableAttributedString.append(NSMutableAttributedString(
+            string: "  ：",
+            attributes: [ NSAttributedString.Key.backgroundColor : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) ]
+        ))
+        mutableAttributedString.append(NSMutableAttributedString(
+            string: minute,
+            attributes: [ NSAttributedString.Key.backgroundColor : #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1) ]
+        ))
+        return mutableAttributedString
+    }
+    
+}
+
+extension String {
+    func padLeft(length: Int, padding: String) -> String {
+        let toPad = length - self.count
+        if toPad < 1 {
+            return self
+        }
+        return "".padding(toLength: toPad, withPad: padding, startingAt: 0) + self
+    }
 }
 
