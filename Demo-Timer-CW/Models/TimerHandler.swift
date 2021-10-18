@@ -11,11 +11,10 @@ struct TimerHandler {
     
     var id: Int
     var name: String
-    var secs: Int
+    var date: Date
     
-    mutating func minus() -> Int {
-        secs -= 1
-        return secs
+    func count() -> DateComponents {
+        Calendar.current.dateComponents([.day, .hour, .minute], from: Date(), to: date)
     }
     
 }

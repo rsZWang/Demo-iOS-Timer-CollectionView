@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A06FB0F6271D1AE800DBDC7E /* TimerSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06FB0F5271D1AE800DBDC7E /* TimerSetupViewController.swift */; };
 		A07E7897271B30860046E871 /* TimerListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07E7896271B30860046E871 /* TimerListCollectionView.swift */; };
 		A07E7899271B461D0046E871 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07E7898271B461D0046E871 /* Extensions.swift */; };
 		A0DB27B32719F298007662EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB27B22719F298007662EA /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A06FB0F5271D1AE800DBDC7E /* TimerSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSetupViewController.swift; sourceTree = "<group>"; };
 		A07E7896271B30860046E871 /* TimerListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerListCollectionView.swift; sourceTree = "<group>"; };
 		A07E7898271B461D0046E871 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A0DB27AF2719F298007662EA /* Demo-Timer-CW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-Timer-CW.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +88,7 @@
 				A0DB27B82719F298007662EA /* Main.storyboard */,
 				A0DB27B62719F298007662EA /* TimerListViewController.swift */,
 				A07E7896271B30860046E871 /* TimerListCollectionView.swift */,
+				A06FB0F5271D1AE800DBDC7E /* TimerSetupViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				A0DB27D22719F872007662EA /* TimerHandler.swift in Sources */,
 				A0DB27CC2719F7D6007662EA /* MutableLiveData.swift in Sources */,
 				A0DB27CF2719F7F9007662EA /* ViewModel.swift in Sources */,
+				A06FB0F6271D1AE800DBDC7E /* TimerSetupViewController.swift in Sources */,
 				A0DB27B52719F298007662EA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

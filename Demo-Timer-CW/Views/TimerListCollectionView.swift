@@ -15,10 +15,12 @@ class TimerListCollectionView: UICollectionView {
         super.init(coder: coder)
         delegate = self
         dataSource = self
-        
-        timerHandlerList.append(TimerHandler(id: 1, secs: 1))
-        timerHandlerList.append(TimerHandler(id: 1, secs: 1))
-        timerHandlerList.append(TimerHandler(id: 1, secs: 1))
+    }
+    
+    func setData(_ list: [TimerHandler]) {
+        timerHandlerList.removeAll()
+        timerHandlerList.append(contentsOf: list)
+        reloadData()
     }
 
 }
@@ -81,7 +83,9 @@ class TimerListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     
     func bind(index: Int, timerHandler: TimerHandler) {
-        itemIndexLabel.text = "項目\((index+1).numberToChi)"
+        itemIndexLabel.text = timerHandler.name
+        let countdown = timerHandler.count()
+        timeLabel.text = "\(countdown.day!)：\(countdown.hour!)：\(countdown.minute!)"
     }
     
 }
